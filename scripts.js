@@ -10,7 +10,7 @@ function initGoogleAPI() {
 function initClient() {
     gapi.client.init({
         apiKey: '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', // Wstaw swój klucz API
-        clientId: '301662730843-if00lpg5jhs2llb6slm2ifm4rvnhiph5', // Wstaw swój Client ID
+        clientId: '301662730843-301662730843-if00lpg5jhs2llb6slm2ifm4rvnhiph5.apps.googleusercontent.com', // Wstaw swój Client ID
         discoveryDocs: ['https://sheets.googleapis.com/$discovery/rest?version=v4'],
         scope: 'https://www.googleapis.com/auth/spreadsheets'
     }).then(() => {
