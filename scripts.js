@@ -134,7 +134,113 @@ function displayUpcomingAppointments() {
     const today = new Date();
     const sevenDaysLater = new Date();
     sevenDaysLater.setDate(today.getDate() + 7);
+    
+    // Konfiguracja Google API
+const CLIENT_ID = 'YOUR_CLIENT_ID';
+const API_KEY = 'YOUR_API_KEY';
+const SCOPE = 'https://www.googleapis.com/auth/spreadsheets';
+const SPREADSHEET_ID = 'YOUR_SPREADSHEET_ID';
 
+// Inicjalizacja Google API
+function initClient() {
+    gapi.client.init({
+        apiKey: API_KEY,
+        clientId: CLIENT_ID,
+        scope: SCOPE,
+    }).then(() => {
+        console.log("Google API client initialized.");
+        // Sprawdzenie, czy użytkownik jest zalogowany
+        gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
+        updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+    });
+}
+
+// Zaloguj się do Google
+function handleClientLoad() {
+    gapi.load('client:auth2', initClient);
+}
+
+// Zaloguj użytkownika
+function updateSigninStatus(isSignedIn) {
+    if (isSignedIn) {
+        // Jeśli zalogowany, załaduj dane
+        fetchDataFromGoogleSheets();
+    } else {
+        gapi.auth2.getAuthInstance().signIn();
+    }
+}
+  // Pobierz dane z Google Sheets
+function fetchDataFromGoogleSheets() {
+    const range = 'Sheet1!A2:F';  // Zakres danych (od wiersza 2, kolumny A-F)
+    gapi.client.sheets.spreadsheets.values.get({
+        spreadsheetId: SPREADSHEET_ID,
+        range: range
+    }).then(response => {
+        const data = response.result.values;
+        const clients = data.map(row => ({
+            name: row[0],
+            phone: row[1],
+            lastVisit: row[2],
+            comment: row[3],
+            nextVisit: row[4],
+            nextComment: row[5]
+        }));
+        displayClients(clients); // Funkcja do wyświetlania danych
+    });
+}
+
+// Funkcja wyświetlania klientów
+function displayClients(clients) {
+    const resultsTable = document.getElementById("resultsTable");
+    resultsTable.innerHTML = ""; // Wyczyść tabelę przed dodaniem nowych danych
+    clients.forEach(client => {
+        const row = resultsTable.insertRow();
+        row.insertCell(0).textContent = client.name;
+        row.insertCell(1).textContent = client.phone;
+        row.insertCell(2).textContent = client.lastVisit;
+        row.insertCell(3).textContent = client.comment;
+        row.insertCell(4).textContent = client.nextVisit;
+        row.insertCell(5).textContent = client.nextComment;
+        const selectCell = row.insertCell(6);
+        const selectButton = document.createElement("button");
+        selectButton.textContent = "Wybierz";
+        selectButton.onclick = () => selectClient(client);
+        selectCell.appendChild(selectButton);
+    });
+}
+  // Dodaj klientkę do Google Sheets
+function addClientToGoogleSheets(name, phone, lastVisit, comment, nextVisit, nextComment) {
+    const range = 'Sheet1!A2:F2';  // Zakres, w którym będą zapisywane dane
+    const values = [
+        [name, phone, lastVisit, comment, nextVisit, nextComment]
+    ];
+    const body = {
+        values: values
+    };
+    gapi.client.sheets.spreadsheets.values.append({
+        spreadsheetId: SPREADSHEET_ID,
+        range: range,
+        valueInputOption: "RAW",
+        resource: body
+    }).then((response) => {
+        console.log('Dane zostały dodane do Google Sheets');
+        fetchDataFromGoogleSheets(); // Ponowne załadowanie danych po dodaniu
+    });
+}
+    
+document.getElementById("addClientForm").addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const name = document.getElementById("clientName").value;
+    const phone = document.getElementById("clientPhone").value;
+    const lastVisit = document.getElementById("clientLastVisit").value;
+    const comment = document.getElementById("clientComment").value;
+    const nextVisit = document.getElementById("clientNextVisit").value;
+    const nextComment = document.getElementById("clientNextComment").value;
+
+    addClientToGoogleSheets(name, phone, lastVisit, comment, nextVisit, nextComment);
+});
+    
     // Pobieranie zaplanowanych wizyt w ciągu najbliższych 7 dni
     clients.forEach(client => {
         client.visits.forEach(visit => {
