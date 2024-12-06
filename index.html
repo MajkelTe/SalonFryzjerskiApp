@@ -7,48 +7,82 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-    <header>
-        <h1>Fryzjernia MK - Baza klientek</h1>
-    </header>
-
     <div class="container">
-        <div class="left-section">
-            <h2>Dodaj nową klientkę</h2>
-            <form id="addClientForm">
-                <label for="clientName">Imię i nazwisko</label>
-                <input type="text" id="clientName" required>
+        <header>
+            <h1>Fryzjernia MK - Baza klientek</h1>
+        </header>
+        
+        <div class="section">
+            <div class="left-section">
+                <h2>Dodaj nową klientkę</h2>
+                <form id="addClientForm">
+                    <label for="clientName">Imię i Nazwisko:</label>
+                    <input type="text" id="clientName" required>
+                    <label for="phoneNumber">Numer telefonu:</label>
+                    <input type="tel" id="phoneNumber" required>
+                    <label for="visitDate">Data wizyty:</label>
+                    <input type="date" id="visitDate" required>
+                    <label for="visitTime">Godzina wizyty:</label>
+                    <input type="time" id="visitTime" required>
+                    <label for="comment">Komentarz:</label>
+                    <textarea id="comment"></textarea>
+                    <button type="submit">Dodaj klientkę</button>
+                </form>
+            </div>
 
-                <label for="clientPhone">Numer telefonu</label>
-                <input type="text" id="clientPhone" required>
+            <div class="right-section">
+                <h2>Wyszukaj istniejącą klientkę</h2>
+                <input type="text" id="searchInput" placeholder="Wyszukaj po imieniu, nazwisku lub numerze telefonu">
+                <button id="searchBtn">Szukaj</button>
 
-                <label for="clientLastVisit">Data poprzedniej wizyty</label>
-                <input type="date" id="clientLastVisit" required>
+                <h3>Wyniki wyszukiwania:</h3>
+                <table id="searchResults" class="hidden">
+                    <thead>
+                        <tr>
+                            <th>Imię i Nazwisko</th>
+                            <th>Numer telefonu</th>
+                            <th>Wybierz</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
 
-                <label for="clientComment">Komentarz do poprzedniej wizyty</label>
-                <textarea id="clientComment"></textarea>
-
-                <label for="clientNextVisit">Data następnej wizyty</label>
-                <input type="date" id="clientNextVisit" required>
-
-                <label for="clientNextComment">Komentarz do następnej wizyty</label>
-                <textarea id="clientNextComment"></textarea>
-
-                <button type="submit">Dodaj klientkę</button>
-            </form>
+                <div id="clientDetails" class="hidden">
+                    <h3>Informacje o klientce</h3>
+                    <p id="clientInfo"></p>
+                    <h4>Historia wizyt:</h4>
+                    <table id="visitHistory">
+                        <thead>
+                            <tr>
+                                <th>Data wizyty</th>
+                                <th>Komentarz</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                    <button id="scheduleBtn">Umów wizytę</button>
+                </div>
+            </div>
         </div>
 
-        <div class="right-section">
-            <h2>Wyszukaj istniejącą klientkę</h2>
-            <input type="text" id="searchClient" placeholder="Wpisz imię lub numer telefonu">
-            <button id="searchButton">Szukaj</button>
-
-            <div id="searchResults"></div>
-
-            <div id="clientDetails"></div>
+        <div class="appointments-section">
+            <h2>Zaplanowane wizyty na najbliższe 7 dni</h2>
+            <table id="appointmentsTable">
+                <thead>
+                    <tr>
+                        <th>Imię i Nazwisko</th>
+                        <th>Data wizyty</th>
+                        <th>Godzina</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
         </div>
     </div>
-
+	<script src="https://apis.google.com/js/api.js"></script>
     <script src="scripts.js"></script>
 </body>
 </html>
