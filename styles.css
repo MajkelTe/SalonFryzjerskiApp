@@ -1,127 +1,81 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
+/* Podstawowy styl strony */
 body {
     font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
     background-color: #f4f4f4;
-    color: #333;
-}
-
-.container {
-    width: 80%;
-    margin: 20px auto;
 }
 
 header {
+    background-color: #333;
+    color: #fff;
     text-align: center;
-    margin-bottom: 30px;
+    padding: 20px;
 }
 
-h1 {
-    font-size: 36px;
-}
-
-h2, h3 {
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-
-h4 {
-    font-size: 20px;
-    margin-top: 20px;
-}
-
-.section {
+.container {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 40px;
+    padding: 20px;
 }
 
 .left-section, .right-section {
-    width: 48%;
+    width: 45%;
 }
 
-form {
-    display: flex;
-    flex-direction: column;
-}
-
-form label {
-    margin-bottom: 5px;
-}
-
-form input, form textarea {
-    margin-bottom: 10px;
-    padding: 8px;
-    font-size: 16px;
-    width: 100%;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-form button {
+h1, h2 {
+    margin: 0;
     padding: 10px;
-    background-color: #4CAF50;
-    color: white;
-    font-size: 16px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
 }
 
-form button:hover {
-    background-color: #45a049;
+label {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+textarea {
+    resize: vertical;
+    height: 100px;
 }
 
 button {
-    padding: 10px;
-    background-color: #007BFF;
-    color: white;
-    font-size: 16px;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #555;
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
+#searchResults {
     margin-top: 20px;
 }
 
-table, th, td {
-    border: 1px solid #ddd;
+.client-item {
+    margin-bottom: 10px;
 }
 
-th, td {
-    padding: 10px;
-    text-align: left;
+.client-item button {
+    margin-left: 10px;
 }
 
-th {
-    background-color: #f2f2f2;
-}
-
-.hidden {
+#clientDetails {
+    margin-top: 20px;
     display: none;
 }
 
-.appointments-section {
-    margin-top: 50px;
-}
-
-.appointments-section table {
-    margin-top: 20px;
-}
-
-.appointments-section th, .appointments-section td {
-    padding: 8px;
-    text-align: center;
+#clientDetails h3 {
+    margin-top: 0;
 }
