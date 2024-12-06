@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fryzjernia MK - Baza klientek</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Fryzjernia MK - Baza klientek</h1>
+        </header>
+        
+        <div class="section">
+            <div class="left-section">
+                <h2>Dodaj nową klientkę</h2>
+                <form id="addClientForm">
+                    <label for="clientName">Imię i Nazwisko:</label>
+                    <input type="text" id="clientName" required>
+                    <label for="phoneNumber">Numer telefonu:</label>
+                    <input type="tel" id="phoneNumber" required>
+                    <label for="visitDate">Data wizyty:</label>
+                    <input type="date" id="visitDate" required>
+                    <label for="visitTime">Godzina wizyty:</label>
+                    <input type="time" id="visitTime" required>
+                    <label for="comment">Komentarz:</label>
+                    <textarea id="comment"></textarea>
+                    <button type="submit">Dodaj klientkę</button>
+                </form>
+            </div>
+
+            <div class="right-section">
+                <h2>Wyszukaj istniejącą klientkę</h2>
+                <input type="text" id="searchInput" placeholder="Wyszukaj po imieniu, nazwisku lub numerze telefonu">
+                <button id="searchBtn">Szukaj</button>
+
+                <h3>Wyniki wyszukiwania:</h3>
+                <table id="searchResults" class="hidden">
+                    <thead>
+                        <tr>
+                            <th>Imię i Nazwisko</th>
+                            <th>Numer telefonu</th>
+                            <th>Wybierz</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+
+                <div id="clientDetails" class="hidden">
+                    <h3>Informacje o klientce</h3>
+                    <p id="clientInfo"></p>
+                    <h4>Historia wizyt:</h4>
+                    <table id="visitHistory">
+                        <thead>
+                            <tr>
+                                <th>Data wizyty</th>
+                                <th>Komentarz</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                    <button id="scheduleBtn">Umów wizytę</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="appointments-section">
+            <h2>Zaplanowane wizyty na najbliższe 7 dni</h2>
+            <table id="appointmentsTable">
+                <thead>
+                    <tr>
+                        <th>Imię i Nazwisko</th>
+                        <th>Data wizyty</th>
+                        <th>Godzina</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
