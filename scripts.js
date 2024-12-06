@@ -46,7 +46,7 @@ function saveClientToGoogleSheets(client) {
 
 // Funkcja do zaczytywania danych z Google Sheets
 function loadClientsFromGoogleSheets() {
-    const spreadsheetId = 'YOUR_SPREADSHEET_ID'; // Wstaw ID swojego arkusza Google
+    const spreadsheetId = '18TxZdgLjHohItvOZZhEBtTt4VJG7yTHUiu6ruudDeH4'; // Wstaw ID swojego arkusza Google
     const range = 'A2:F'; // Zakres komórek, z którego pobieramy dane
 
     const request = gapi.client.sheets.spreadsheets.values.get({
