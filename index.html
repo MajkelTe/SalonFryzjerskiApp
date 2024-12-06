@@ -7,77 +7,48 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
+    <header>
+        <h1>Fryzjernia MK - Baza klientek</h1>
+    </header>
+
     <div class="container">
-        <header>
-            <h1>Fryzjernia MK - Baza klientek</h1>
-        </header>
-        <form id="addClientForm">
-    <input type="text" id="clientName" placeholder="Imię i nazwisko" required>
-    <input type="tel" id="clientPhone" placeholder="Numer telefonu" required>
-    <input type="date" id="clientLastVisit" placeholder="Data ostatniej wizyty" required>
-    <input type="text" id="clientComment" placeholder="Komentarz do wizyty" required>
-    <input type="date" id="clientNextVisit" placeholder="Data kolejnej wizyty" required>
-    <input type="text" id="clientNextComment" placeholder="Komentarz do kolejnej wizyty" required>
-    <button type="submit">Dodaj klientkę</button>
-	</form>
-        <div class="section">
-            <div class="left-section">
-                <h2>Dodaj nową klientkę</h2>
-            </div>
+        <div class="left-section">
+            <h2>Dodaj nową klientkę</h2>
+            <form id="addClientForm">
+                <label for="clientName">Imię i nazwisko</label>
+                <input type="text" id="clientName" required>
 
-            <div class="right-section">
-                <h2>Wyszukaj istniejącą klientkę</h2>
-                <input type="text" id="searchInput" placeholder="Wyszukaj po imieniu, nazwisku lub numerze telefonu">
-                <button id="searchBtn">Szukaj</button>
+                <label for="clientPhone">Numer telefonu</label>
+                <input type="text" id="clientPhone" required>
 
-                <h3>Wyniki wyszukiwania:</h3>
-                <table id="searchResults" class="hidden">
-                    <thead>
-                        <tr>
-                            <th>Imię i Nazwisko</th>
-                            <th>Numer telefonu</th>
-                            <th>Wybierz</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
+                <label for="clientLastVisit">Data poprzedniej wizyty</label>
+                <input type="date" id="clientLastVisit" required>
 
-                <div id="clientDetails" class="hidden">
-                    <h3>Informacje o klientce</h3>
-                    <p id="clientInfo"></p>
-                    <h4>Historia wizyt:</h4>
-                    <table id="visitHistory">
-                        <thead>
-                            <tr>
-                                <th>Data wizyty</th>
-                                <th>Komentarz</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
-                    <button id="scheduleBtn">Umów wizytę</button>
-                </div>
-            </div>
+                <label for="clientComment">Komentarz do poprzedniej wizyty</label>
+                <textarea id="clientComment"></textarea>
+
+                <label for="clientNextVisit">Data następnej wizyty</label>
+                <input type="date" id="clientNextVisit" required>
+
+                <label for="clientNextComment">Komentarz do następnej wizyty</label>
+                <textarea id="clientNextComment"></textarea>
+
+                <button type="submit">Dodaj klientkę</button>
+            </form>
         </div>
 
-        <div class="appointments-section">
-            <h2>Zaplanowane wizyty na najbliższe 7 dni</h2>
-            <table id="appointmentsTable">
-                <thead>
-                    <tr>
-                        <th>Imię i Nazwisko</th>
-                        <th>Data wizyty</th>
-                        <th>Godzina</th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
+        <div class="right-section">
+            <h2>Wyszukaj istniejącą klientkę</h2>
+            <input type="text" id="searchClient" placeholder="Wpisz imię lub numer telefonu">
+            <button id="searchButton">Szukaj</button>
+
+            <div id="searchResults"></div>
+
+            <div id="clientDetails"></div>
         </div>
     </div>
-	<script src="https://apis.google.com/js/api.js"></script>
+
     <script src="scripts.js"></script>
 </body>
 </html>
