@@ -1,81 +1,127 @@
-/* Podstawowy styl strony */
-body {
-    font-family: Arial, sans-serif;
+* {
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    box-sizing: border-box;
 }
 
-header {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 20px;
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
 }
 
 .container {
+    width: 80%;
+    margin: 20px auto;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+h1 {
+    font-size: 36px;
+}
+
+h2, h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+h4 {
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+.section {
     display: flex;
     justify-content: space-between;
-    padding: 20px;
+    margin-bottom: 40px;
 }
 
 .left-section, .right-section {
-    width: 45%;
+    width: 48%;
 }
 
-h1, h2 {
-    margin: 0;
-    padding: 10px;
+form {
+    display: flex;
+    flex-direction: column;
 }
 
-label {
-    font-weight: bold;
-    margin-top: 10px;
+form label {
+    margin-bottom: 5px;
 }
 
-input, textarea {
-    width: 100%;
-    padding: 10px;
+form input, form textarea {
     margin-bottom: 10px;
-    border-radius: 5px;
-    border: 1px solid #ddd;
+    padding: 8px;
+    font-size: 16px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
-textarea {
-    resize: vertical;
-    height: 100px;
+form button {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #45a049;
 }
 
 button {
-    padding: 10px 20px;
-    background-color: #333;
-    color: #fff;
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+    font-size: 16px;
     border: none;
-    border-radius: 5px;
+    border-radius: 4px;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #555;
+    background-color: #0056b3;
 }
 
-#searchResults {
+table {
+    width: 100%;
+    border-collapse: collapse;
     margin-top: 20px;
 }
 
-.client-item {
-    margin-bottom: 10px;
+table, th, td {
+    border: 1px solid #ddd;
 }
 
-.client-item button {
-    margin-left: 10px;
+th, td {
+    padding: 10px;
+    text-align: left;
 }
 
-#clientDetails {
-    margin-top: 20px;
+th {
+    background-color: #f2f2f2;
+}
+
+.hidden {
     display: none;
 }
 
-#clientDetails h3 {
-    margin-top: 0;
+.appointments-section {
+    margin-top: 50px;
+}
+
+.appointments-section table {
+    margin-top: 20px;
+}
+
+.appointments-section th, .appointments-section td {
+    padding: 8px;
+    text-align: center;
 }
